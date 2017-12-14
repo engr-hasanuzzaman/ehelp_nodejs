@@ -1,11 +1,11 @@
 exports.sayHelloInEnglish = function() {
-  return 'Hello'
+    return "Hello"
 }
 
 exports.sayHelloInSwedish = function() {
-  return 'Hej'
+    return "Hej"
 }
 
 exports.sayHelloInTatar = function() {
-  return 'Isänme'
+    return "Isänme"
 }

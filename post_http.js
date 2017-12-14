@@ -1,18 +1,18 @@
-const http = require('http')
+const https = require('https')
 
-const url = 'singleappinitial.robi.com.bd'
+const url = 'singleappdev.robi.com.bd'
 
 const options = {
     hostname: url,
-    port: 80,
-    path: '/api/v1/tokens',
-    method: 'POST',
+    // port: 443,
+    path: '/api/v1/advertisements',
+    method: 'GET',
     headers: {
 
     }
 }
 
-const req = http.request(options, (res) => {
+const req = https.request(options, (res) => {
     let buff = ''
 
     res.on('data', (chunk) => {

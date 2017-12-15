@@ -1,5 +1,6 @@
 const https = require('https')
-const fp = require('fp')
+const fs = require('fs')
+const path = require('path')
 
 module.exports.download = function(url){
    return https.get(url, (res) => {
@@ -10,7 +11,7 @@ module.exports.download = function(url){
         })
 
         res.on('end', () => {
-          saveData('html.txt', buff)
+          saveData(path.join(__dirname, 't2.txt'), buff)
         })
     }).on('error', (error) => {
         console.log(`fetching url ${url} has been faild for ${error.message}`)

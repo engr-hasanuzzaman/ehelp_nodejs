@@ -19,5 +19,8 @@
   "dependencies": {
     "eslint": "^4.13.1",
     "jslint": "^0.11.0"
+  },
+  "devDependencies": {
+    "csvtojson": "1.1.9"
   }
 }

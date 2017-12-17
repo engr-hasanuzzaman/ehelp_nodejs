@@ -22,6 +22,7 @@
     "jslint": "^0.11.0"
   },
   "devDependencies": {
-    "csvtojson": "1.1.9"
+    "csvtojson": "1.1.9",
+    "node-dev": "3.1.3"
   }
 }

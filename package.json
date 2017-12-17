@@ -18,6 +18,7 @@
   "homepage": "https://github.com/engr-hasanuzzaman/ehelp_nodejs#readme",
   "dependencies": {
     "eslint": "^4.13.1",
+    "express": "4.16.2",
     "jslint": "^0.11.0"
   },
   "devDependencies": {

@@ -5,34 +5,47 @@ const morgan = require("morgan")
 
 app.use(bodyParse.json())
 app.use(morgan("dev"))
+let nextId = 3
 
-let profile = {
+let profile = [{
+    id: 1,
     username: "hasanuzzaman",
     email: "hasan@gmail.coml",
     url: "http://test.com"
-}
+},
+{
+    id: 2,
+    username: "sumon",
+    email: "sumon@gmail.coml",
+    url: "http://sumon.com"
+}]
 
+// show profile
 app.get("/profile", (req, res) => {
+    console.log("passing query id is ", req.query.id)
+    if(req.query.id) return res.send(profile[req.query.id])
     res.send(profile)
 })
 
 // create profile
 app.post("/profile", (req, res) => {
-    profile = req.body
+    profile.push(Object.assign(req.body, {id: nextId}))
+    nextId += 1
     console.log("profile created", profile)
     res.sendStatus(201)
 })
 
 // update profile
-app.put("/profile", (req, res) => {
-    Object.assign(profile, req.body)
+app.put("/profile/:id", (req, res) => {
+    console.log("req.params.id & req.body", req.params.id, req.body)
+    Object.assign(profile[req.params.id], req.body)
     console.log("after updating profile value is ", profile)
     req.tatus(204).send('{"success": "true"}')
 })
 
 // delete
-app.delete("/profile", (req, res) => {
-    profile = {}
+app.delete("/profile/:id", (req, res) => {
+    profile.splice(req.params.id, 1)
     console.log("deleted", profile)
     res.sendStatus(204)
 })

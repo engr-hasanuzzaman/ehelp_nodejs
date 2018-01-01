@@ -39,7 +39,7 @@ app.post("/profile", (req, res) => {
         username: req.body.username,
         email: req.body.email,
         url: req.body.url    
-    };
+    }
 
     profile.push(data)
     // nextId += 1

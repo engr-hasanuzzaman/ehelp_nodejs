@@ -29,8 +29,20 @@ app.get("/profile", (req, res) => {
 
 // create profile
 app.post("/profile", (req, res) => {
-    profile.push(Object.assign(req.body, {id: nextId}))
-    nextId += 1
+    console.log("-with in profile create method", req.body)
+    if(!req.body.username|| !req.body.email){
+        console.log("missing parameters")
+        return res.status(422).send('{ "error": "parameter missing"}')
+    }
+    
+    let data = {
+        username: req.body.username,
+        email: req.body.email,
+        url: req.body.url    
+    };
+
+    profile.push(data)
+    // nextId += 1
     console.log("profile created", profile)
     res.sendStatus(201)
 })
@@ -40,7 +52,7 @@ app.put("/profile/:id", (req, res) => {
     console.log("req.params.id & req.body", req.params.id, req.body)
     Object.assign(profile[req.params.id], req.body)
     console.log("after updating profile value is ", profile)
-    req.tatus(204).send('{"success": "true"}')
+    req.status(204).send('{"success": "true"}')
 })
 
 // delete

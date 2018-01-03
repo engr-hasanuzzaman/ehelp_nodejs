@@ -13,5 +13,10 @@ app.use(bodyParser.json())
 app.use(logger("dev"))
 app.use(errorHandler())
 
+/*
+* load routes from ./routes folder
+*/ 
+require("./routes")(app)
+
 // run application
 app.listen(3001)

@@ -1,5 +1,5 @@
-module.exports = function(app){
+module.exports = function(app, store){
     app.get("/posts", (req, res) => {
-        res.json({ "status": "success" })
+        res.json(store.posts)
     })
 }
